@@ -8,8 +8,8 @@ Haltestell: Name der (nächstgelegenen) Haltestelle<br>
 stellplaet: Anzahl der Stellplätze<br>
 ÖPNVRegio:	Anschluss zum Regionalverkehr am nächstgelegenen Bahnhaltepunkt<br>
 ÖPNVS-Bah: Anschluss zu einer S-Bahn-Linie am nächstgelegenen Bahnhaltepunkt<br>
-ÖPNV Bus: Anschluss zum Busverkehr am nächst-gelegenen Bahnhaltepunkt <br>
-SPFV: Anschluss zum Schienenpersonenver-kehr (ICE, ECE, IC, TGV, Flixtrain) am nächstgelegenen Bahnhaltepunkt<br>
+ÖPNV Bus: Anschluss zum Busverkehr am nächstgelegenen Bahnhaltepunkt <br>
+SPFV: Anschluss zum Schienenpersonenverkehr (ICE, ECE, IC, TGV, Flixtrain) am nächstgelegenen Bahnhaltepunkt<br>
 ÖPNV Tram: Anschluss zu einer Straßenbahnlinie am nächstgelegenen Bahnhaltepunkt<br>
 ÖPNVRufta: Anschluss zu einer Ruftaxilinie am nächstgelegenen Bahnhaltepunkt<br>
 ÖPNVOn-De: Anschluss zu einem On-Demand-Verkehr am nächstgelegenen Bahnhaltepunkt<br>
@@ -29,7 +29,7 @@ Kursbuchst: Zugehörige Kursbuchstrecken der entsprechenden Bahnstrecken für di
 Zentralör: Etwaige zentralörtliche Funktion der Gemeinde<br>
 Raumkatego: Raumkategorie der Gemeinde<br>
 SPNV/Stund: Anzahl der stündlichen Schienenpersonennahverkehrsverbindungen in alle Richtungen auf Basis eines Werktagesfahrplanes ohne Baustellen und Taktverdichter<br>
-Erhebungsa: Information, ob P + R Anlage bei der de-taillierten Auslastungsbetrachtung berücksichtigt wurde<br>
+Erhebungsa: Information, ob P + R Anlage bei der detaillierten Auslastungsbetrachtung berücksichtigt wurde<br>
 Fahrradb_n: Existenz von Fahrradboxen (Ja / Nein)<br>
 Anz_Fahrra: Anzahl der Fahrradabstellmöglichkeiten<br>
 Art_Fahrra: Darstellung der unterschiedlichen Arten von Fahrradabstellmöglichkeiten<br>
