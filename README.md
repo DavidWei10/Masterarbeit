@@ -2,9 +2,9 @@ Spaltenbezeichnungen
 
 
 
-gemeinde: Name der Gemeinde
-stadtteil: Name des Stadtteils der Gemeinde
-Haltestell: Name der (nächstgelegenen) Haltestelle
+gemeinde: Name der Gemeinde<br>
+stadtteil: Name des Stadtteils der Gemeinde<br>
+Haltestell: Name der (nächstgelegenen) Haltestelle<br>
 stellplaet: Anzahl der Stellplätze
 ÖPNVRegio:	Anschluss zum Regionalverkehr am nächstgelegenen Bahnhaltepunkt
 ÖPNVS-Bah: Anschluss zu einer S-Bahn-Linie am nächstgelegenen Bahnhaltepunkt
