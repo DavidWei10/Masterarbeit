@@ -766,46 +766,20 @@ function fnc_project_color(values, context) {
 
 
 
-function exp_park_ridePoint_3rule0_eval_expression(context) {
-    // Fahrradabs = 'Ja'
+function exp_Multimodalittszugang_9rule0_eval_expression(context) {
+    // Fahrradabs = 'Nein' AND Fahrradb_n = 'Nein' AND Nextbike = 'Nein' AND Park_Ladem = 0 AND Carsh_Park = 0 OR Fahrradabs = 'Ja' AND Fahrradb_n = 'Nein' AND Nextbike = 'Nein' AND Park_Ladem = 0 AND Carsh_Park = 0 OR Fahrradabs = 'Ja' AND Fahrradb_n = 'Nein' AND Nextbike = 'Nein' AND Park_Ladem = - 1 AND Carsh_Park = 0 OR Fahrradabs = 'Ja' AND Fahrradb_n = 'Nein' AND Nextbike = 'Nein' AND Park_Ladem = 0 AND Carsh_Park = - 1 OR Fahrradabs = 'Ja' AND Fahrradb_n = 'Nein' AND Nextbike = 'Nein' AND Park_Ladem = - 1 AND Carsh_Park = - 1
 
     var feature = context.feature;
     
     if (feature.properties) {
-        return (feature.get('Fahrradabs')  == 'Ja');
+        return (((((((((feature.get('Fahrradabs')  == 'Nein') && (feature.get('Fahrradb_n')  == 'Nein')) && (feature.get('Nextbike')  == 'Nein')) && (feature.get('Park_Ladem')  == 0)) && (feature.get('Carsh_Park')  == 0)) || (((((feature.get('Fahrradabs')  == 'Ja') && (feature.get('Fahrradb_n')  == 'Nein')) && (feature.get('Nextbike')  == 'Nein')) && (feature.get('Park_Ladem')  == 0)) && (feature.get('Carsh_Park')  == 0))) || (((((feature.get('Fahrradabs')  == 'Ja') && (feature.get('Fahrradb_n')  == 'Nein')) && (feature.get('Nextbike')  == 'Nein')) && (feature.get('Park_Ladem')  == - 1 )) && (feature.get('Carsh_Park')  == 0))) || (((((feature.get('Fahrradabs')  == 'Ja') && (feature.get('Fahrradb_n')  == 'Nein')) && (feature.get('Nextbike')  == 'Nein')) && (feature.get('Park_Ladem')  == 0)) && (feature.get('Carsh_Park')  == - 1 ))) || (((((feature.get('Fahrradabs')  == 'Ja') && (feature.get('Fahrradb_n')  == 'Nein')) && (feature.get('Nextbike')  == 'Nein')) && (feature.get('Park_Ladem')  == - 1 )) && (feature.get('Carsh_Park')  == - 1 )));
     } else {
-        return (feature.get('Fahrradabs')  == 'Ja');
+        return (((((((((feature.get('Fahrradabs')  == 'Nein') && (feature.get('Fahrradb_n')  == 'Nein')) && (feature.get('Nextbike')  == 'Nein')) && (feature.get('Park_Ladem')  == 0)) && (feature.get('Carsh_Park')  == 0)) || (((((feature.get('Fahrradabs')  == 'Ja') && (feature.get('Fahrradb_n')  == 'Nein')) && (feature.get('Nextbike')  == 'Nein')) && (feature.get('Park_Ladem')  == 0)) && (feature.get('Carsh_Park')  == 0))) || (((((feature.get('Fahrradabs')  == 'Ja') && (feature.get('Fahrradb_n')  == 'Nein')) && (feature.get('Nextbike')  == 'Nein')) && (feature.get('Park_Ladem')  == - 1 )) && (feature.get('Carsh_Park')  == 0))) || (((((feature.get('Fahrradabs')  == 'Ja') && (feature.get('Fahrradb_n')  == 'Nein')) && (feature.get('Nextbike')  == 'Nein')) && (feature.get('Park_Ladem')  == 0)) && (feature.get('Carsh_Park')  == - 1 ))) || (((((feature.get('Fahrradabs')  == 'Ja') && (feature.get('Fahrradb_n')  == 'Nein')) && (feature.get('Nextbike')  == 'Nein')) && (feature.get('Park_Ladem')  == - 1 )) && (feature.get('Carsh_Park')  == - 1 )));
     }
 }
 
 
-function exp_park_ridePoint_3rule1_eval_expression(context) {
-    // Fahrradb_n = 'Ja'
-
-    var feature = context.feature;
-    
-    if (feature.properties) {
-        return (feature.get('Fahrradb_n')  == 'Ja');
-    } else {
-        return (feature.get('Fahrradb_n')  == 'Ja');
-    }
-}
-
-
-function exp_park_ridePoint_3rule2_eval_expression(context) {
-    // Nextbike = 'Flexzone Karlsruhe' OR Nextbike = 'Ja'
-
-    var feature = context.feature;
-    
-    if (feature.properties) {
-        return ((feature.get('Nextbike')  == 'Flexzone Karlsruhe') || (feature.get('Nextbike')  == 'Ja'));
-    } else {
-        return ((feature.get('Nextbike')  == 'Flexzone Karlsruhe') || (feature.get('Nextbike')  == 'Ja'));
-    }
-}
-
-
-function exp_park_ridePoint_3rule3_eval_expression(context) {
+function exp_Multimodalittszugang_10rule0_eval_expression(context) {
     // Park_Ladem = 1 OR Park_Ladem = 2 OR Park_Ladem = 4
 
     var feature = context.feature;
@@ -818,7 +792,7 @@ function exp_park_ridePoint_3rule3_eval_expression(context) {
 }
 
 
-function exp_park_ridePoint_3rule4_eval_expression(context) {
+function exp_Multimodalittszugang_11rule0_eval_expression(context) {
     // Carsh_Park = 1 OR Carsh_Park = 2 OR Carsh_Park = 3
 
     var feature = context.feature;
@@ -831,46 +805,7 @@ function exp_park_ridePoint_3rule4_eval_expression(context) {
 }
 
 
-function exp_park_ridePoint_3rule5_eval_expression(context) {
-    // Fahrradabs = 'Nein' AND Fahrradb_n = 'Nein' AND Nextbike = 'Nein' AND Park_Ladem = 0 AND Carsh_Park = 0
-
-    var feature = context.feature;
-    
-    if (feature.properties) {
-        return (((((feature.get('Fahrradabs')  == 'Nein') && (feature.get('Fahrradb_n')  == 'Nein')) && (feature.get('Nextbike')  == 'Nein')) && (feature.get('Park_Ladem')  == 0)) && (feature.get('Carsh_Park')  == 0));
-    } else {
-        return (((((feature.get('Fahrradabs')  == 'Nein') && (feature.get('Fahrradb_n')  == 'Nein')) && (feature.get('Nextbike')  == 'Nein')) && (feature.get('Park_Ladem')  == 0)) && (feature.get('Carsh_Park')  == 0));
-    }
-}
-
-
-function exp_park_ridePoint_5rule0_eval_expression(context) {
-    // Fahrradabs = 'Ja'
-
-    var feature = context.feature;
-    
-    if (feature.properties) {
-        return (feature.get('Fahrradabs')  == 'Ja');
-    } else {
-        return (feature.get('Fahrradabs')  == 'Ja');
-    }
-}
-
-
-function exp_park_ridePoint_5rule1_eval_expression(context) {
-    // Fahrradb_n = 'Ja'
-
-    var feature = context.feature;
-    
-    if (feature.properties) {
-        return (feature.get('Fahrradb_n')  == 'Ja');
-    } else {
-        return (feature.get('Fahrradb_n')  == 'Ja');
-    }
-}
-
-
-function exp_park_ridePoint_5rule2_eval_expression(context) {
+function exp_Multimodalittszugang_12rule0_eval_expression(context) {
     // Nextbike = 'Flexzone Karlsruhe' OR Nextbike = 'Ja'
 
     var feature = context.feature;
@@ -883,7 +818,20 @@ function exp_park_ridePoint_5rule2_eval_expression(context) {
 }
 
 
-function exp_park_ridePoint_5rule3_eval_expression(context) {
+function exp_Multimodalittszugang_13rule0_eval_expression(context) {
+    // Fahrradb_n = 'Ja'
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return (feature.get('Fahrradb_n')  == 'Ja');
+    } else {
+        return (feature.get('Fahrradb_n')  == 'Ja');
+    }
+}
+
+
+function exp_BikeundRideBR_14rule0_eval_expression(context) {
     // Fahrradabs = 'Nein' AND Fahrradb_n = 'Nein'
 
     var feature = context.feature;
@@ -892,5 +840,44 @@ function exp_park_ridePoint_5rule3_eval_expression(context) {
         return ((feature.get('Fahrradabs')  == 'Nein') && (feature.get('Fahrradb_n')  == 'Nein'));
     } else {
         return ((feature.get('Fahrradabs')  == 'Nein') && (feature.get('Fahrradb_n')  == 'Nein'));
+    }
+}
+
+
+function exp_BikeundRideBR_15rule0_eval_expression(context) {
+    // Nextbike = 'Flexzone Karlsruhe' OR Nextbike = 'Ja'
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return ((feature.get('Nextbike')  == 'Flexzone Karlsruhe') || (feature.get('Nextbike')  == 'Ja'));
+    } else {
+        return ((feature.get('Nextbike')  == 'Flexzone Karlsruhe') || (feature.get('Nextbike')  == 'Ja'));
+    }
+}
+
+
+function exp_BikeundRideBR_16rule0_eval_expression(context) {
+    // Fahrradb_n = 'Ja'
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return (feature.get('Fahrradb_n')  == 'Ja');
+    } else {
+        return (feature.get('Fahrradb_n')  == 'Ja');
+    }
+}
+
+
+function exp_BikeundRideBR_17rule0_eval_expression(context) {
+    // Fahrradabs = 'Ja'
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return (feature.get('Fahrradabs')  == 'Ja');
+    } else {
+        return (feature.get('Fahrradabs')  == 'Ja');
     }
 }

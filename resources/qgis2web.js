@@ -9,7 +9,7 @@ var map = new ol.Map({
 });
 
 //initial view - epsg:3857 coordinates if not "Match project CRS"
-map.getView().fit([816633.439307, 6211352.671645, 1025833.897392, 6348823.527520], map.getSize());
+map.getView().fit([934330.241711, 6274340.753309, 976026.751585, 6301694.374044], map.getSize());
 
 ////small screen definition
     var hasTouchScreen = map.getViewport().classList.contains('ol-touch');
@@ -114,7 +114,7 @@ var featureOverlay = new ol.layer.Vector({
 });
 
 var doHighlight = false;
-var doHover = false;
+var doHover = true;
 
 function createPopupField(currentFeature, currentFeatureKeys, layer) {
     var popupText = '';
@@ -445,7 +445,56 @@ var bottomRightContainerDiv = document.getElementById('bottom-right-container')
 
 //title
 
+var Title = new ol.control.Control({
+    element: (() => {
+        var titleElement = document.createElement('div');
+        titleElement.className = 'top-right-title ol-control';
+        titleElement.innerHTML = '<h2 class="project-title">Aufbereiteter P & R Datensatz</h2>';
+        return titleElement;
+    })(),
+    target: 'top-right-container'
+});
+map.addControl(Title)
+    
 //abstract
+
+var Abstract = new ol.control.Control({
+    element: (() => {
+        var titleElement = document.createElement('div');
+        titleElement.className = 'top-right-abstract ol-control';
+        titleElement.id = 'abstract';
+
+        var linkElement = document.createElement('a');
+
+        if (1174 > 240) {
+            linkElement.setAttribute("onmouseenter", "showAbstract()");
+            linkElement.setAttribute("onmouseleave", "hideAbstract()");
+            linkElement.innerHTML = 'i';
+
+            window.hideAbstract = function() {
+                linkElement.classList.add("project-abstract");
+                linkElement.classList.remove("project-abstract-uncollapsed");
+                linkElement.innerHTML = 'i';
+            }
+
+            window.showAbstract = function() {
+                linkElement.classList.remove("project-abstract");
+                linkElement.classList.add("project-abstract-uncollapsed");
+                linkElement.innerHTML = 'Die Aufbereitung basiert auf Grundlage des Datensatzes vom Transparenzportal der Stadt Karlsruhe und wurde im Rahmen der Masterarbeit "Charakterisierung von Park and Ride Anlagen im Raum Karlsruhe" von David Weiser am Institut für Verkehrswesen (IfV) des Karlsruher Institut für Technologie (KIT) erstellt.<br /><br />Erklärung Spaltenbezeichnungen: <a href="https://github.com/DavidWei10/Masterarbeit">Github Repository</a> <br><br />Quellenverweise: <br><br />Datensatz <a href="https://transparenz.karlsruhe.de/packages?id=d5f1ff6d-2f12-4d14-b1a9-a5c5c3a2cfdf">Park and Ride</a>, <a href="https://transparenz.karlsruhe.de/organization/47f81b28-f494-4bca-a36c-b636924ad0c3">Stadt Karlsruhe</a>. Veröffentlicht unter der Lizenz <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Namensnennung - 4.0 International (CC-BY 4.0)</a>. <br />© OpenStreetMap-Beitragende<br />© <a href="https://www.bkg.bund.de/"> © BKG (2025)</a> <a href="https://www.govdata.de/dl-de/by-2-0"> dl-de/by-2-0</a>, Datenquellen: <a href="https://sgx.geodatenzentrum.de/web_public/gdz/datenquellen/Datenquellen_vg_nuts.pdf">https://sgx.geodatenzentrum.de/web_public/gdz/datenquellen/Datenquellen_vg_nuts.pd</a>';
+            }
+
+            hideAbstract();
+        } else {
+            linkElement.classList.add("project-abstract-uncollapsed");
+            linkElement.innerHTML = 'Die Aufbereitung basiert auf Grundlage des Datensatzes vom Transparenzportal der Stadt Karlsruhe und wurde im Rahmen der Masterarbeit "Charakterisierung von Park and Ride Anlagen im Raum Karlsruhe" von David Weiser am Institut für Verkehrswesen (IfV) des Karlsruher Institut für Technologie (KIT) erstellt.<br /><br />Erklärung Spaltenbezeichnungen: <a href="https://github.com/DavidWei10/Masterarbeit">Github Repository</a> <br><br />Quellenverweise: <br><br />Datensatz <a href="https://transparenz.karlsruhe.de/packages?id=d5f1ff6d-2f12-4d14-b1a9-a5c5c3a2cfdf">Park and Ride</a>, <a href="https://transparenz.karlsruhe.de/organization/47f81b28-f494-4bca-a36c-b636924ad0c3">Stadt Karlsruhe</a>. Veröffentlicht unter der Lizenz <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Namensnennung - 4.0 International (CC-BY 4.0)</a>. <br />© OpenStreetMap-Beitragende<br />© <a href="https://www.bkg.bund.de/"> © BKG (2025)</a> <a href="https://www.govdata.de/dl-de/by-2-0"> dl-de/by-2-0</a>, Datenquellen: <a href="https://sgx.geodatenzentrum.de/web_public/gdz/datenquellen/Datenquellen_vg_nuts.pdf">https://sgx.geodatenzentrum.de/web_public/gdz/datenquellen/Datenquellen_vg_nuts.pd</a>';
+        }
+
+        titleElement.appendChild(linkElement);
+        return titleElement;
+    })(),
+    target: 'top-right-container'
+});
+map.addControl(Abstract);
 
 
 //geolocate
@@ -818,173 +867,21 @@ let measuring = false;
 
 //geocoder
 
-  //Layer to represent the point of the geocoded address
-  var geocoderLayer = new ol.layer.Vector({
-      source: new ol.source.Vector(),
-  });
-  map.addLayer(geocoderLayer);
-  var vectorSource = geocoderLayer.getSource();
-
-  //Variable used to store the coordinates of geocoded addresses
-  var obj2 = {
-  value: '',
-  letMeKnow() {
-      //console.log(`Geocoded position: ${this.gcd}`);
-  },
-  get gcd() {
-      return this.value;
-  },
-  set gcd(value) {
-      this.value = value;
-      this.letMeKnow();
-  }
-  }
-
-  var obj = {
-      value: '',
-      get label() {
-          return this.value;
-      },
-      set label(value) {
-          this.value = value;
-      }
-  }
-
-  // Function to handle the selected address
-  function onSelected(feature) {
-      obj.label = feature;
-      input.value = typeof obj.label.properties.label === "undefined"? obj.label.properties.display_name : obj.label.properties.label;
-      var coordinates = ol.proj.transform(
-      [feature.geometry.coordinates[0], feature.geometry.coordinates[1]],
-      "EPSG:4326",
-      map.getView().getProjection()
-      );
-      vectorSource.clear(true);
-      obj2.gcd = [feature.geometry.coordinates[0], feature.geometry.coordinates[1]];
-      var marker = new ol.Feature(new ol.geom.Point(coordinates));
-      var zIndex = 1;
-      marker.setStyle(new ol.style.Style({
-      image: new ol.style.Icon(({
-          anchor: [0.5, 1],
-          anchorXUnits: 'fraction',
-          anchorYUnits: 'fraction',
-          scale: 0.7,
-          opacity: 1,
-          src: "./resources/marker.png",
-          zIndex: zIndex
-      })),
-      zIndex: zIndex
-      }));
-      vectorSource.addFeature(marker);
-      map.getView().setCenter(coordinates);
-      map.getView().setZoom(18);
-  }
-
-  // Format the result in the autocomplete search bar
-  var formatResult = function (feature, el) {
-      var title = document.createElement("strong");
-      el.appendChild(title);
-      var detailsContainer = document.createElement("small");
-      el.appendChild(detailsContainer);
-      var details = [];
-      title.innerHTML = feature.properties.label || feature.properties.display_name;
-      var types = {
-      housenumber: "numéro",
-      street: "rue",
-      locality: "lieu-dit",
-      municipality: "commune",
-      };
-      if (
-      feature.properties.city &&
-      feature.properties.city !== feature.properties.name
-      ) {
-      details.push(feature.properties.city);
-      }
-      if (feature.properties.context) {
-      details.push(feature.properties.context);
-      }
-      detailsContainer.innerHTML = details.join(", ");
-  };
-
-  // Define a class to create the control button for the search bar in a div tag
-  class AddDomControl extends ol.control.Control {
-      constructor(elementToAdd, opt_options) {
-      const options = opt_options || {};
-
-      const element = document.createElement("div");
-      if (options.className) {
-          element.className = options.className;
-      }
-      element.appendChild(elementToAdd);
-
-      super({
-          element: element,
-          target: options.target,
-      });
-      }
-  }
-
-  // Function to show you can do something with the returned elements
-  function myHandler(featureCollection) {
-      //console.log(featureCollection);
-  }
-
-  // URL for API
-  const url = {"Nominatim OSM": "https://nominatim.openstreetmap.org/search?format=geojson&addressdetails=1&",
-  "France BAN": "https://api-adresse.data.gouv.fr/search/?"}
-  var API_URL = "//api-adresse.data.gouv.fr";
-
-  // Create search by adresses component
-  var containers = new Photon.Search({
-    resultsHandler: myHandler,
-    onSelected: onSelected,
-    placeholder: "Search an address",
-    formatResult: formatResult,
-    //url: API_URL + "/search/?",
-    url: url["Nominatim OSM"],
-    position: "topright",
-    // ,includePosition: function() {
-    //   return ol.proj.transform(
-    //     map.getView().getCenter(),
-    //     map.getView().getProjection(), //'EPSG:3857',
-    //     'EPSG:4326'
-    //   );
-    // }
-  });
-
-  // Add the created DOM element within the map
-  //var left = document.getElementById("top-left-container");
-  var controlGeocoder = new AddDomControl(containers, {
-    className: "photon-geocoder-autocomplete ol-unselectable ol-control",
-  });
-  map.addControl(controlGeocoder);
-  var search = document.getElementsByClassName("photon-geocoder-autocomplete ol-unselectable ol-control")[0];
-  search.style.display = "flex";
-
-  // Create the new button element
-  var button = document.createElement("button");
-  button.type = "button";
-  button.id = "gcd-button-control";
-  button.className = "gcd-gl-btn fa fa-search leaflet-control";
-
-  // Ajouter le bouton à l'élément parent
-  search.insertBefore(button, search.firstChild);
-  last = search.lastChild;
-  last.style.display = "none";
-  button.addEventListener("click", function (e) {
-      if (last.style.display === "none") {
-          last.style.display = "block";
-      } else {
-          last.style.display = "none";
-      }
-  });
-  input = document.getElementsByClassName("photon-input")[0];
-  //var searchbar = document.getElementsByClassName("photon-geocoder-autocomplete ol-unselectable ol-control")[0]
-  //left.appendChild(searchbar);
-        
 
 //layer search
 
+var searchLayer = new SearchLayer({
+    layer: lyr_AnlagenimBestandsdatensatz_18,
+    colName: 'gemeinde',
+    zoom: 10,
+    collapsed: true,
+    map: map,
+    maxResults: 10,
+});
+map.addControl(searchLayer);
+document.getElementsByClassName('search-layer')[0].getElementsByTagName('button')[0].className += ' fa fa-binoculars';
+document.getElementsByClassName('search-layer-input-search')[0].placeholder = 'Search feature ...';
+    
 
 //scalebar
 
@@ -992,11 +889,22 @@ let measuring = false;
 //layerswitcher
 
 var layerSwitcher = new ol.control.LayerSwitcher({
-    tipLabel: "Layers",
-    target: 'top-right-container'
-});
+    activationMode: 'click',
+	startActive: true,
+	tipLabel: "Layers",
+    target: 'top-right-container',
+	collapseLabel: '»',
+	collapseTipLabel: 'Close'
+    });
 map.addControl(layerSwitcher);
-    
+if (hasTouchScreen || isSmallScreen) {
+	document.addEventListener('DOMContentLoaded', function() {
+		setTimeout(function() {
+			layerSwitcher.hidePanel();
+		}, 500);
+	});	
+}
+
 
 
 
